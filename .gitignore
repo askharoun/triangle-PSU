@@ -16,6 +16,8 @@
 # next.js
 /.next/
 /out/
+my-supabase-app/
+triangle-psu-site/
 
 # production
 /build
