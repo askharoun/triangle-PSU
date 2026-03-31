@@ -1,6 +1,9 @@
 .header {
   --nav-accent: #9c2b3e;
   --nav-accent-soft: #b75458;
+  --nav-subtitle-start: #80545d;
+  --nav-subtitle-mid: #b9858f;
+  --nav-subtitle-end: #9c2b3e;
   --nav-bg: rgba(248, 249, 250, 0.98);
   --nav-bg-alt: rgba(255, 255, 255, 0.99);
   --nav-text: #2b2b2b;
@@ -18,7 +21,7 @@
   --nav-control-bg-hover: rgba(156, 43, 62, 0.09);
   --nav-control-border: rgba(43, 43, 43, 0.11);
   --nav-control-foreground: #2b2b2b;
-  --brand-logo-filter: brightness(0) saturate(100%);
+  --brand-logo-filter: invert(0);
   position: sticky;
   top: 0;
   z-index: 60;
@@ -40,11 +43,15 @@
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(156, 43, 62, 0.44), transparent);
   pointer-events: none;
+  z-index: 0;
 }
 
 :global(html[data-theme="dark"]) .header {
   --nav-bg: rgba(15, 23, 42, 0.96);
   --nav-bg-alt: rgba(11, 17, 32, 0.985);
+  --nav-subtitle-start: #d4a0aa;
+  --nav-subtitle-mid: #e3bec5;
+  --nav-subtitle-end: #c98e99;
   --nav-text: rgba(247, 242, 242, 0.9);
   --nav-text-strong: #ffffff;
   --nav-muted: rgba(247, 242, 242, 0.66);
@@ -55,7 +62,7 @@
   --nav-control-bg-hover: rgba(183, 84, 88, 0.15);
   --nav-control-border: rgba(255, 255, 255, 0.12);
   --nav-control-foreground: #f7f2f2;
-  --brand-logo-filter: brightness(0) invert(1);
+  --brand-logo-filter: invert(1);
   background:
     linear-gradient(115deg, rgba(183, 84, 88, 0.11), transparent 22%),
     linear-gradient(90deg, var(--nav-bg), var(--nav-bg-alt));
@@ -68,10 +75,12 @@
 
 .shell {
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
   display: flex;
   width: 100%;
   max-width: 90rem;
-  min-height: 5.85rem;
+  min-height: 6.2rem;
   align-items: center;
   gap: 1.35rem;
   padding: 0.72rem 1.1rem;
@@ -82,7 +91,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-  min-width: 8.85rem;
+  min-width: 10.25rem;
   flex-shrink: 0;
   padding-right: 0.65rem;
   color: var(--nav-text);
@@ -95,7 +104,8 @@
   display: block;
   width: auto;
   height: auto;
-  max-height: 3.55rem;
+  max-width: 12.5rem;
+  max-height: 4.35rem;
   filter: var(--brand-logo-filter);
   transition: filter 220ms ease;
 }
@@ -110,14 +120,20 @@
   text-transform: uppercase;
   white-space: nowrap;
   line-height: 1;
-  background-image: linear-gradient(90deg, #9c2b3e, #e8a5b0, #9c2b3e);
-  background-size: 200% auto;
+  background-image: linear-gradient(
+    104deg,
+    var(--nav-subtitle-start) 0%,
+    var(--nav-subtitle-mid) 48%,
+    var(--nav-subtitle-end) 100%
+  );
+  background-size: 260% 100%;
   background-position: 0% 50%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: chapterGradientFlow 8s linear infinite;
+  filter: saturate(84%);
+  animation: chapterGradientFlow 18s linear infinite alternate;
 }
 
 .brand:hover,
@@ -215,6 +231,7 @@
   position: absolute;
   top: calc(100% - 0.1rem);
   left: 0;
+  z-index: 8;
   min-width: 18.5rem;
   overflow: hidden;
   border: 1px solid rgba(156, 43, 62, 0.18);
@@ -490,7 +507,7 @@
 
 .mobileUtilityRow {
   display: flex;
-  align-items: end;
+  align-items: center;
   gap: 0.75rem;
 }
 
@@ -515,7 +532,7 @@
   justify-content: center;
   min-height: 2.5rem;
   border: 1px solid var(--nav-accent);
-  border-radius: 0.95rem;
+  border-radius: 999px;
   background: var(--nav-accent);
   color: #ffffff;
   font: inherit;
@@ -608,7 +625,7 @@
   }
 
   to {
-    background-position: -200% center;
+    background-position: 100% center;
   }
 }
 
@@ -632,7 +649,7 @@
 
 @media (max-width: 1179px) {
   .brand {
-    min-width: 8rem;
+    min-width: 9.25rem;
     padding-right: 0;
   }
 
@@ -648,7 +665,7 @@
   }
 
   .brandLogo {
-    max-height: 3rem;
+    max-height: 3.5rem;
   }
 
   .brandSubtitle {

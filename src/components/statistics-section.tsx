@@ -7,7 +7,7 @@ type Statistic = {
   value: number;
 };
 
-const COUNT_UP_DURATION_MS = 2500;
+const COUNT_UP_DURATION_MS = 4800;
 
 const statistics: Statistic[] = [
   { value: 31988, label: "Total Initiates" },
@@ -33,7 +33,11 @@ export function StatisticsSection() {
       return;
     }
 
-    const easeOutCubic = (progress: number) => 1 - (1 - progress) ** 3;
+    const easeOutSine = (progress: number) => {
+      const shapedProgress = progress ** 1.12;
+
+      return Math.sin((shapedProgress * Math.PI) / 2);
+    };
 
     const startCountUp = () => {
       const prefersReducedMotion = window.matchMedia(
@@ -50,12 +54,13 @@ export function StatisticsSection() {
       const updateCounts = (currentTime: number) => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / COUNT_UP_DURATION_MS, 1);
-        const easedProgress = easeOutCubic(progress);
+        const easedProgress = easeOutSine(progress);
 
-        // Drive every counter from the same animation frame so the grid stays synchronized.
+        // Keep every counter synchronized and use a softer ease-out so the motion
+        // feels deliberate instead of front-loading most of the count.
         setCounts(
           statistics.map((statistic) =>
-            Math.round(statistic.value * easedProgress),
+            Math.floor(statistic.value * easedProgress),
           ),
         );
 
@@ -103,15 +108,15 @@ export function StatisticsSection() {
     <section
       ref={sectionRef}
       aria-labelledby="triangle-statistics-heading"
-      className="relative overflow-hidden rounded-[2.75rem_2rem_3rem_2rem] border border-[color:var(--surface-dark-border)] bg-[linear-gradient(135deg,var(--surface-dark),var(--surface-dark-strong))] px-6 py-8 text-[var(--text-on-dark)] shadow-[0_30px_80px_-48px_var(--shadow-strong)] sm:px-8 sm:py-10"
+      className="relative overflow-hidden rounded-[1.5rem] border border-[color:var(--surface-dark-border)] bg-[linear-gradient(135deg,var(--surface-dark),var(--surface-dark-strong))] px-6 py-8 text-[var(--text-on-dark)] shadow-[0_30px_80px_-48px_var(--shadow-strong)] sm:px-8 sm:py-10"
     >
       <div className="pointer-events-none absolute left-0 top-0 h-52 w-52 rounded-full bg-[var(--triangle-rose)]/14 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-48 w-48 rounded-full bg-[var(--psu-pugh)]/14 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-48 w-48 rounded-full bg-[var(--triangle-gray)]/14 blur-3xl" />
 
       <div className="relative">
         <div className="flex flex-col gap-6 border-b border-white/10 pb-7 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--psu-pugh)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#ddb2b9]">
               Triangle By The Numbers
             </p>
             <h2
@@ -127,8 +132,8 @@ export function StatisticsSection() {
             </p>
           </div>
 
-          <div className="inline-flex w-fit flex-col rounded-[1.7rem_1.7rem_1rem_1rem] border border-white/12 bg-white/6 px-5 py-4 shadow-[0_18px_48px_-34px_rgba(0,0,0,0.58)] backdrop-blur">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--psu-pugh)]">
+          <div className="inline-flex w-fit flex-col rounded-[1rem] border border-white/12 bg-white/6 px-5 py-4 shadow-[0_18px_48px_-34px_rgba(0,0,0,0.58)] backdrop-blur">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#e0bcc3]">
               National Footprint
             </span>
             <span className="font-display mt-2 text-3xl leading-none text-white">
@@ -142,7 +147,7 @@ export function StatisticsSection() {
           {statistics.map((statistic, index) => (
             <div
               key={statistic.label}
-              className="rounded-[1.75rem_1.75rem_1.08rem_1.08rem] border border-white/10 bg-white/6 px-5 py-6 shadow-[0_20px_55px_-38px_rgba(0,0,0,0.55)] backdrop-blur transition duration-200 hover:-translate-y-1 hover:border-[rgba(156,43,62,0.42)] hover:bg-white/8"
+              className="rounded-[1rem] border border-white/10 bg-white/6 px-5 py-6 shadow-[0_20px_55px_-38px_rgba(0,0,0,0.55)] backdrop-blur transition duration-200 hover:-translate-y-1 hover:border-[rgba(156,43,62,0.42)] hover:bg-white/8"
             >
               <div className="mx-auto h-1 w-12 rounded-full bg-[linear-gradient(90deg,#9c2b3e,#e8a5b0,#9c2b3e)]" />
               <dd className="mt-5 text-5xl font-light tracking-tight text-[#e3a2ac] tabular-nums sm:text-6xl">

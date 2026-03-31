@@ -5,6 +5,7 @@
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
+  flex-shrink: 0;
   border: 1px solid var(--nav-control-border);
   border-radius: 999px;
   background: var(--nav-control-bg);
@@ -25,8 +26,8 @@
 .sunIcon,
 .moonIcon {
   position: absolute;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.05rem;
+  height: 1.05rem;
   transition:
     opacity 180ms ease,
     transform 180ms ease,

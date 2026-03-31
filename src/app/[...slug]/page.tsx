@@ -57,7 +57,7 @@ export default async function CatchAllPage({
     "This page is connected to the updated Penn State Triangle navigation structure and is ready for section-specific content.";
 
   return (
-    <section className="rounded-[2.25rem_2.25rem_2rem_3rem] border border-[color:var(--shell-border)] bg-[color:var(--shell-bg)] p-6 shadow-[0_34px_90px_-48px_var(--shadow-soft)] backdrop-blur sm:p-8">
+    <section className="rounded-[1.3rem] border border-[color:var(--surface-dark-border)] bg-[color:var(--shell-bg)] p-6 shadow-[0_26px_72px_-50px_var(--shadow-soft)] backdrop-blur sm:p-8">
       <div className="flex flex-wrap items-center gap-3 text-sm text-[color:var(--muted)]">
         <Link
           href="/"
@@ -75,8 +75,8 @@ export default async function CatchAllPage({
         ))}
       </div>
 
-      <div className="mt-8 max-w-3xl space-y-5">
-        <div>
+      <div className="mt-8 max-w-3xl space-y-6">
+        <div className="border-b border-[color:var(--surface-dark-border)] pb-5">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--triangle-rose)]">
             {sectionLabel}
           </p>
@@ -91,7 +91,7 @@ export default async function CatchAllPage({
             : summary}
         </p>
 
-        <div className="rounded-[1.5rem_1.5rem_1rem_1rem] border border-[color:var(--surface-dark-border)] bg-[color:var(--surface-muted)] px-5 py-4 text-sm leading-relaxed text-[color:var(--foreground)]">
+        <div className="border-l-[3px] border-[var(--triangle-rose)] bg-[linear-gradient(135deg,rgba(153,0,51,0.06),rgba(255,255,255,0.52))] px-5 py-4 text-sm leading-relaxed text-[color:var(--foreground)]">
           The content area is ready for the corresponding section material. The
           route is already linked from the navigation tree with the correct
           parent-child relationship.

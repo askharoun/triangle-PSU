@@ -55,7 +55,7 @@ function FooterLink({
       href={href}
       className={`group relative inline-flex w-fit pb-1 text-sm leading-none transition duration-200 ${
         accent
-          ? "font-semibold text-[var(--psu-pugh)] hover:text-white"
+          ? "font-semibold text-[#ddb2b9] hover:text-white"
           : "font-medium text-white/76 hover:text-white"
       }`}
     >
@@ -73,7 +73,7 @@ function RibbonSeparator() {
         alt=""
         width={40}
         height={35}
-        className="absolute left-1/2 top-1/2 h-[2.45rem] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 brightness-0 invert opacity-95"
+        className="absolute left-1/2 top-1/2 h-[2.45rem] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 brightness-0 invert opacity-40"
       />
     </span>
   );
@@ -97,7 +97,7 @@ export function SiteFooter() {
             className="h-auto w-[11.75rem] sm:w-[13.5rem] lg:w-[14.75rem] xl:w-[15.25rem]"
           />
 
-          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--psu-pugh)]">
+          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#d7b8bf]">
             Penn State Chapter
           </p>
         </div>
@@ -106,8 +106,8 @@ export function SiteFooter() {
           <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2 xl:grid-cols-4">
             {footerColumns.map((group) => (
               <div key={group.title} className="min-w-0">
-                <p className="text-[0.8rem] font-semibold uppercase tracking-[0.2em] text-[var(--psu-pugh)]">
-                {group.title}
+                <p className="text-[0.8rem] font-semibold uppercase tracking-[0.2em] text-[#d7b8bf]">
+                  {group.title}
                 </p>
                 <div className="mt-3 flex flex-col gap-2.5">
                   {group.links.map((link) => (
@@ -125,18 +125,13 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="relative border-t border-white/8 bg-[linear-gradient(180deg,rgba(8,19,35,0.72),rgba(7,16,29,0.92))] py-4">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[var(--surface-dark-strong)] to-transparent sm:w-24" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[var(--surface-dark-strong)] to-transparent sm:w-24" />
-
-        <div className="mb-3 flex items-center justify-center gap-3 px-4 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--psu-pugh)] sm:px-6 lg:px-8">
-          <span className="h-px w-10 bg-[var(--psu-pugh)]/30" />
+      <div className="relative bg-[linear-gradient(180deg,rgba(10,16,24,0.86),rgba(6,11,17,0.96))] py-4">
+        <div className="relative mb-3 px-4 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-white/46 sm:px-6 lg:px-8">
           Chapter Ideals
-          <span className="h-px w-10 bg-[var(--psu-pugh)]/30" />
         </div>
 
-        <div className="footer-ribbon overflow-hidden">
-          <div className="footer-wheel-track" style={{ animationDuration: "14s" }}>
+        <div className="footer-ribbon relative overflow-hidden">
+          <div className="footer-wheel-track" style={{ animationDuration: "18s" }}>
             {Array.from({ length: 4 }).map((_, loopIndex) => (
               <div key={loopIndex} className="footer-wheel-set">
                 {ribbonWords.map((word, wordIndex) => (
