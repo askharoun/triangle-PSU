@@ -1,6 +1,6 @@
 .header {
-  --nav-accent: #9c2b3e;
-  --nav-accent-soft: #b75458;
+  --nav-accent: var(--button-primary-bg);
+  --nav-accent-soft: var(--accent-soft);
   --nav-subtitle-start: #80545d;
   --nav-subtitle-mid: #b9858f;
   --nav-subtitle-end: #9c2b3e;
@@ -9,17 +9,17 @@
   --nav-text: #2b2b2b;
   --nav-text-strong: #111111;
   --nav-muted: #666666;
-  --nav-border: rgba(156, 43, 62, 0.14);
-  --nav-border-strong: rgba(156, 43, 62, 0.24);
+  --nav-border: rgba(140, 23, 55, 0.14);
+  --nav-border-strong: rgba(140, 23, 55, 0.24);
   --nav-shadow: rgba(13, 10, 11, 0.14);
   --nav-dropdown-bg: linear-gradient(180deg, rgba(17, 29, 53, 0.99), rgba(11, 17, 32, 0.995));
   --nav-dropdown-header: linear-gradient(90deg, rgba(156, 43, 62, 0.96), rgba(183, 84, 88, 0.88));
   --nav-dropdown-text: #f7f2f2;
   --nav-dropdown-muted: rgba(247, 242, 242, 0.74);
   --nav-dropdown-surface: rgba(255, 255, 255, 0.08);
-  --nav-control-bg: rgba(43, 43, 43, 0.05);
-  --nav-control-bg-hover: rgba(156, 43, 62, 0.09);
-  --nav-control-border: rgba(43, 43, 43, 0.11);
+  --nav-control-bg: rgba(140, 23, 55, 0.04);
+  --nav-control-bg-hover: rgba(140, 23, 55, 0.11);
+  --nav-control-border: rgba(17, 32, 51, 0.11);
   --nav-control-foreground: #2b2b2b;
   --brand-logo-filter: invert(0);
   position: sticky;
@@ -55,17 +55,29 @@
   --nav-text: rgba(247, 242, 242, 0.9);
   --nav-text-strong: #ffffff;
   --nav-muted: rgba(247, 242, 242, 0.66);
-  --nav-border: rgba(183, 84, 88, 0.18);
-  --nav-border-strong: rgba(183, 84, 88, 0.28);
+  --nav-border: rgba(213, 109, 131, 0.18);
+  --nav-border-strong: rgba(213, 109, 131, 0.28);
   --nav-shadow: rgba(0, 0, 0, 0.72);
-  --nav-control-bg: rgba(255, 255, 255, 0.05);
-  --nav-control-bg-hover: rgba(183, 84, 88, 0.15);
-  --nav-control-border: rgba(255, 255, 255, 0.12);
+  --nav-control-bg: rgba(255, 255, 255, 0.06);
+  --nav-control-bg-hover: rgba(221, 178, 185, 0.14);
+  --nav-control-border: rgba(221, 178, 185, 0.16);
   --nav-control-foreground: #f7f2f2;
   --brand-logo-filter: invert(1);
   background:
     linear-gradient(115deg, rgba(183, 84, 88, 0.11), transparent 22%),
     linear-gradient(90deg, var(--nav-bg), var(--nav-bg-alt));
+}
+
+:global(html[data-theme="dark"]) .shellDivider {
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(221, 178, 185, 0.12) 14%,
+      rgba(221, 178, 185, 0.34) 50%,
+      rgba(221, 178, 185, 0.12) 86%,
+      transparent 100%
+    );
 }
 
 .headerScrolled {
@@ -139,6 +151,23 @@
 .brand:hover,
 .brand:focus-visible {
   transform: translateY(-1px);
+}
+
+.shellDivider {
+  align-self: stretch;
+  width: 1px;
+  flex-shrink: 0;
+  margin-block: 0.55rem;
+  margin-inline: 0.25rem 0.1rem;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(156, 43, 62, 0.12) 14%,
+      rgba(156, 43, 62, 0.34) 50%,
+      rgba(156, 43, 62, 0.12) 86%,
+      transparent 100%
+    );
 }
 
 .desktopRegion {
@@ -315,37 +344,6 @@
   border-left: 1px solid var(--nav-border);
 }
 
-.signInButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.5rem;
-  border: 1px solid var(--nav-accent);
-  border-radius: 999px;
-  background: var(--nav-accent);
-  padding: 0 1.35rem;
-  color: #ffffff;
-  font: inherit;
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
-}
-
-.signInButton:hover,
-.signInButton:focus-visible {
-  border-color: var(--nav-accent-soft);
-  background: var(--nav-accent-soft);
-  transform: translateY(-1px);
-}
-
 .socialList {
   display: flex;
   align-items: center;
@@ -397,8 +395,9 @@
   font-weight: 600;
   cursor: pointer;
   transition:
-    background-color 180ms ease,
+    background 180ms ease,
     border-color 180ms ease,
+    box-shadow 180ms ease,
     color 180ms ease;
 }
 
@@ -406,6 +405,7 @@
 .menuButton:focus-visible {
   border-color: var(--nav-border-strong);
   background: var(--nav-control-bg-hover);
+  box-shadow: 0 14px 28px -26px var(--nav-shadow);
 }
 
 .mobilePanel {
@@ -525,35 +525,6 @@
   text-transform: uppercase;
 }
 
-.mobileSignInButton {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.5rem;
-  border: 1px solid var(--nav-accent);
-  border-radius: 999px;
-  background: var(--nav-accent);
-  color: #ffffff;
-  font: inherit;
-  font-size: 0.88rem;
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
-    transform 180ms ease;
-}
-
-.mobileSignInButton:hover,
-.mobileSignInButton:focus-visible {
-  border-color: var(--nav-accent-soft);
-  background: var(--nav-accent-soft);
-  transform: translateY(-1px);
-}
-
 .mobileSocialList {
   display: grid;
   gap: 0.5rem;
@@ -634,6 +605,10 @@
     padding: 0.74rem 1.5rem;
   }
 
+  .shellDivider {
+    margin-inline: 0.5rem 1rem;
+  }
+
   .desktopRegion {
     display: flex;
   }
@@ -651,6 +626,11 @@
   .brand {
     min-width: 9.25rem;
     padding-right: 0;
+  }
+
+  .shellDivider {
+    margin-left: auto;
+    margin-right: 0.7rem;
   }
 
   .brandSubtitle {
@@ -673,6 +653,10 @@
     letter-spacing: 0.2em;
   }
 
+  .shellDivider {
+    margin-right: 0.55rem;
+  }
+
   .menuButton span {
     display: none;
   }
@@ -691,11 +675,9 @@
   .dropdownChevron,
   .dropdownList a,
   .socialLink,
-  .signInButton,
   .menuButton,
   .mobileToggle svg,
   .mobileChildren a,
-  .mobileSignInButton,
   .mobileSocialLink {
     transition: none;
   }

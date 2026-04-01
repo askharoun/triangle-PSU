@@ -24,17 +24,12 @@ function FacebookIcon({
   return (
     <svg
       aria-hidden="true"
-      fill="none"
+      fill="currentColor"
       height={size}
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
       viewBox="0 0 24 24"
       width={size}
     >
-      <path d="M9 21h6a6 6 0 0 0 6-6V9a6 6 0 0 0-6-6H9a6 6 0 0 0-6 6v6a6 6 0 0 0 6 6Z" />
-      <path d="M14.5 8H13a2 2 0 0 0-2 2v2h3.2l-.45 3H11v5" />
+      <path d="M13.64 20v-6.35h2.14l.32-2.48h-2.46V9.59c0-.72.2-1.2 1.23-1.2h1.31V6.16c-.23-.03-.99-.08-1.89-.08-1.87 0-3.15 1.14-3.15 3.22v1.8H9v2.48h2.13V20h2.51Z" />
     </svg>
   );
 }
@@ -63,6 +58,24 @@ function InstagramIcon({
   );
 }
 
+function LinkedInIcon({
+  size = 18,
+}: {
+  size?: number;
+}) {
+  return (
+    <svg
+      aria-hidden="true"
+      fill="currentColor"
+      height={size}
+      viewBox="0 0 24 24"
+      width={size}
+    >
+      <path d="M6.43 8.03a1.53 1.53 0 1 1 0-3.06 1.53 1.53 0 0 1 0 3.06ZM5.11 9.38h2.64V18H5.11V9.38ZM9.42 9.38h2.53v1.18h.04c.35-.67 1.22-1.39 2.5-1.39 2.67 0 3.16 1.76 3.16 4.04V18h-2.64v-4.2c0-1-.02-2.29-1.39-2.29-1.4 0-1.61 1.09-1.61 2.22V18H9.42V9.38Z" />
+    </svg>
+  );
+}
+
 const socialLinks = [
   {
     href: "https://www.facebook.com/PSUTriangle",
@@ -77,28 +90,18 @@ const socialLinks = [
     shortLabel: "Instagram",
   },
   {
+    href: "https://www.linkedin.com/company/triangle-fraternity",
+    icon: LinkedInIcon,
+    label: "Triangle Fraternity on LinkedIn",
+    shortLabel: "LinkedIn",
+  },
+  {
     href: "https://www.triangle.org/",
     icon: Globe,
     label: "Triangle Nationals Website",
     shortLabel: "Triangle Nationals",
   },
 ] as const;
-
-function SignInButton({
-  mobile = false,
-}: {
-  mobile?: boolean;
-}) {
-  return (
-    <button
-      type="button"
-      className={mobile ? styles.mobileSignInButton : styles.signInButton}
-      title="Authentication placeholder for future Supabase sign in"
-    >
-      Sign In
-    </button>
-  );
-}
 
 function isItemActive(item: NavigationItem, pathname: string) {
   if (item.href) {
@@ -400,6 +403,8 @@ function SiteHeaderInner({
           <span className={styles.brandSubtitle}>Penn State Chapter</span>
         </Link>
 
+        <span className={styles.shellDivider} aria-hidden="true" />
+
         <div className={styles.desktopRegion}>
           <nav className={styles.nav} aria-label="Primary navigation">
             <ul className={styles.list}>
@@ -429,7 +434,6 @@ function SiteHeaderInner({
           <div className={styles.actions}>
             <SocialLinks />
             <ThemeToggle />
-            <SignInButton />
           </div>
         </div>
 
@@ -480,7 +484,6 @@ function SiteHeaderInner({
                   <span className={styles.mobileFooterTitle}>Theme</span>
                   <ThemeToggle />
                 </div>
-                <SignInButton mobile />
               </div>
 
               <p className={styles.mobileFooterTitle}>Connect</p>

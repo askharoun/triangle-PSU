@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 
+import { PageUtilities } from "../components/page-utilities";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
 
@@ -60,6 +61,7 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <PageUtilities />
         <div className="relative isolate flex min-h-full flex-col overflow-hidden">
           <SiteHeader />
 

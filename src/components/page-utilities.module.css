@@ -1,0 +1,60 @@
+.scrollTopButton {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid color-mix(in srgb, var(--button-primary-border) 82%, rgba(255, 255, 255, 0.14));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--button-primary-bg) 84%, rgba(255, 255, 255, 0.06));
+  box-shadow: 0 22px 40px -24px var(--button-primary-shadow);
+  color: var(--button-primary-text);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.85rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.scrollTopButton[data-visible="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scrollTopButton:hover,
+.scrollTopButton:focus-visible {
+  border-color: var(--button-primary-bg-hover);
+  background: color-mix(in srgb, var(--button-primary-bg-hover) 88%, rgba(255, 255, 255, 0.08));
+  box-shadow: 0 24px 44px -24px var(--button-primary-shadow);
+}
+
+.scrollTopButton:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--button-primary-bg-hover) 78%, white 10%);
+  outline-offset: 3px;
+}
+
+@media (max-width: 639px) {
+  .scrollTopButton {
+    right: 0.85rem;
+    bottom: 0.85rem;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollTopButton {
+    transition: none;
+  }
+}

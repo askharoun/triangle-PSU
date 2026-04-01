@@ -15,19 +15,21 @@ export const homeContent = {
   quoteAttribution: "Herb Scobie, Minn32",
   title: "Penn State Chapter of Triangle Fraternity",
   values: [
-    "Honor the fraternity ritual and its core precepts.",
-    "Take full responsibility for chapter work, including everyday house tasks.",
-    "Preserve the ideals and standards of Triangle.",
-    "Live within your means and meet personal obligations promptly.",
-    "Help make the chapter home a place where lifelong friendships can grow.",
-    "Maintain a strong scholastic record.",
-    "Support the welfare and reputation of your profession.",
-    "Carry yourself with self-respect and proper conduct.",
-    "Uphold the traditions and program of Penn State.",
-    "Pursue success through honest effort and discipline.",
+    "Observe the precepts of the Fraternity as set forth in the Ritual;",
+    "Accept cheerfully my full share of any task, however menial, involved in maintaining a chapter home;",
+    "Preserve and promote the chosen ideals of my Fraternity;",
+    "Pay all personal bills promptly, and always live within my means;",
+    "Help create in my chapter home an environment in which enduring friendships may be formed;",
+    "Maintain a creditable scholastic record;",
+    "Promote the welfare of my profession;",
+    "Maintain my self-respect by proper conduct at all times;",
+    "Uphold faithfully the traditions and program of my Alma Mater;",
+    "Pay the price of success in honest effort.",
   ],
   valuesIntro:
-    "Triangle brothers are expected to live with character, accountability, and respect for one another. The code of ethics centers on service, scholarship, professional pride, and conduct worthy of the chapter.",
+    "All Triangle brothers hold themselves to high moral standards and strive to be the best men they can in order to build a better world for tomorrow. Triangles Code of Ethics reflects our fraternitys beliefs and values.",
+  valuesLeadIn:
+    "As a member of Triangle, I recognize my obligation to:",
 };
 
 export const routeSummaries: Record<string, string> = {

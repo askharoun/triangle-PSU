@@ -91,10 +91,12 @@ export default async function CatchAllPage({
             : summary}
         </p>
 
-        <div className="border-l-[3px] border-[var(--triangle-rose)] bg-[linear-gradient(135deg,rgba(153,0,51,0.06),rgba(255,255,255,0.52))] px-5 py-4 text-sm leading-relaxed text-[color:var(--foreground)]">
-          The content area is ready for the corresponding section material. The
-          route is already linked from the navigation tree with the correct
-          parent-child relationship.
+        <div className="chapter-surface-callout px-5 py-4">
+          <p className="chapter-callout-body chapter-callout-body-strong text-sm leading-relaxed">
+            The content area is ready for the corresponding section material.
+            The route is already linked from the navigation tree with the
+            correct parent-child relationship.
+          </p>
         </div>
       </div>
     </section>

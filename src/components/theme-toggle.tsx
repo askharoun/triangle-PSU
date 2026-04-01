@@ -4,7 +4,9 @@ import { MoonStar, SunMedium } from "lucide-react";
 
 import styles from "./theme-toggle.module.css";
 
-function applyTheme(nextTheme: "light" | "dark") {
+type Theme = "light" | "dark";
+
+function applyTheme(nextTheme: Theme) {
   const root = document.documentElement;
 
   root.dataset.theme = nextTheme;
@@ -12,22 +14,29 @@ function applyTheme(nextTheme: "light" | "dark") {
   localStorage.setItem("triangle-theme", nextTheme);
 }
 
+function getTheme(): Theme {
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+}
+
 export function ThemeToggle() {
+  function handleClick() {
+    const currentTheme = getTheme();
+    applyTheme(currentTheme === "dark" ? "light" : "dark");
+  }
+
   return (
     <button
       type="button"
       aria-label="Toggle color theme"
       title="Toggle color theme"
-      onClick={() => {
-        const currentTheme =
-          document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-        applyTheme(currentTheme === "dark" ? "light" : "dark");
-      }}
+      onClick={handleClick}
       className={styles.toggle}
     >
       <span className={styles.label}>Toggle color theme</span>
-      <MoonStar className={styles.moonIcon} />
-      <SunMedium className={styles.sunIcon} />
+      <span className={styles.iconFrame} aria-hidden="true">
+        <MoonStar className={styles.moonIcon} />
+        <SunMedium className={styles.sunIcon} />
+      </span>
     </button>
   );
 }

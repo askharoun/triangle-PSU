@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import awardsImage from "../../Assets/2026/Exec/Awards.jpg";
+
 import { HomeSlideshow } from "../components/home-slideshow";
 import { StatisticsSection } from "../components/statistics-section";
 import { homeContent } from "../lib/site-content";
@@ -23,11 +25,11 @@ export default function HomePage() {
               {aboutIntroduction}
             </p>
 
-            <div className="border-l-[3px] border-[var(--triangle-rose)] bg-[linear-gradient(135deg,rgba(153,0,51,0.06),rgba(255,255,255,0.52))] px-5 py-5 sm:pl-6">
-              <p className="font-display text-[2rem] leading-[1.02] text-[color:var(--foreground)]">
+            <div className="chapter-surface-callout chapter-quote px-5 py-5 sm:pl-6">
+              <p className="chapter-quote-text font-display">
                 &ldquo;{homeContent.quote}&rdquo;
               </p>
-              <p className="mt-3 text-sm font-medium uppercase tracking-[0.18em] text-[#8d5e67]">
+              <p className="chapter-quote-attribution mt-3 text-sm font-medium uppercase tracking-[0.18em]">
                 {homeContent.quoteAttribution}
               </p>
             </div>
@@ -35,13 +37,13 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-3 pt-1">
               <Link
                 href="/join/introduction"
-                className="rounded-md bg-[var(--triangle-rose)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]"
+                className="button-primary rounded-full px-5 py-3 text-sm font-semibold"
               >
                 Learn More
               </Link>
               <Link
                 href="/contact"
-                className="rounded-md border border-[rgba(156,43,62,0.22)] bg-[rgba(156,43,62,0.05)] px-5 py-3 text-sm font-semibold text-[var(--triangle-rose)] transition hover:bg-[rgba(156,43,62,0.12)]"
+                className="button-secondary rounded-full px-5 py-3 text-sm font-semibold"
               >
                 Contact Us
               </Link>
@@ -62,13 +64,13 @@ export default function HomePage() {
         </div>
 
         <div className="relative mt-8 min-h-[17rem] border-t border-[color:var(--surface-dark-border)] pt-9 text-center sm:mt-10 sm:min-h-[20rem] sm:pt-10 lg:min-h-[23rem]">
-          <div className="pointer-events-none absolute inset-x-2 inset-y-0 sm:inset-x-6 lg:inset-x-10">
+          <div className="pointer-events-none absolute inset-x-2 top-3 bottom-1 sm:inset-x-6 sm:top-4 sm:bottom-2 lg:inset-x-10 lg:top-5 lg:bottom-2">
             <Image
               src="/media/triangle-coa.png"
               alt=""
               fill
               sizes="100vw"
-              className="object-contain object-center opacity-[0.09] saturate-0"
+              className="site-watermark object-contain object-center"
             />
           </div>
 
@@ -84,13 +86,16 @@ export default function HomePage() {
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
-        <article className="rounded-[1.15rem] border border-[color:var(--surface-dark-border)] bg-[linear-gradient(180deg,rgba(255,253,248,0.9),rgba(255,250,245,0.84))] p-6 shadow-[0_22px_62px_-50px_var(--shadow-soft)]">
+        <article className="values-panel rounded-[1.15rem] border border-[color:var(--surface-dark-border)] p-6 shadow-[0_22px_62px_-50px_var(--shadow-soft)]">
           <div className="border-b border-[color:var(--surface-dark-border)] pb-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--triangle-rose)]">
+            <p className="values-eyebrow text-xs font-semibold uppercase tracking-[0.24em]">
               Values and Code Ethics
             </p>
-            <p className="mt-3 max-w-3xl text-base leading-relaxed text-[color:var(--muted)]">
+            <p className="values-intro mt-3 max-w-3xl text-base leading-relaxed">
               {homeContent.valuesIntro}
+            </p>
+            <p className="values-lead mt-4 max-w-3xl text-sm font-semibold uppercase tracking-[0.16em]">
+              {homeContent.valuesLeadIn}
             </p>
           </div>
 
@@ -98,7 +103,7 @@ export default function HomePage() {
             {homeContent.values.map((value, index) => (
               <li
                 key={value}
-                className="border-l border-[color:var(--surface-dark-border)] pl-4 text-sm leading-relaxed text-[color:var(--muted-strong)]"
+                className="values-item border-l border-[color:var(--surface-dark-border)] pl-4 text-sm leading-relaxed"
               >
                 <span className="mb-2 block font-display text-[1.45rem] leading-none text-[var(--triangle-rose)]">
                   {`Value ${index + 1}`}
@@ -110,29 +115,40 @@ export default function HomePage() {
         </article>
 
         <article className="rounded-[1.15rem] border border-[color:var(--surface-dark-border)] bg-[color:var(--surface-strong)] p-6 shadow-[0_22px_62px_-50px_var(--shadow-soft)]">
-          <div className="border-l-[3px] border-[var(--triangle-rose)] pl-5">
+          <div className="chapter-surface-callout px-5 py-5">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--triangle-rose)]">
               Discover Triangle
             </p>
-            <p className="font-display mt-3 text-[2.55rem] leading-[0.92] text-[color:var(--foreground)]">
+            <p className="chapter-callout-title font-display mt-3">
               A chapter built around academic achievement, leadership, and
               brotherhood.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-[color:var(--muted)]">
+            <p className="chapter-callout-body mt-4 text-base leading-relaxed">
               {homeContent.mission}
             </p>
+          </div>
+
+          <div className="relative mt-6 aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-[color:var(--surface-dark-border)] bg-[color:var(--surface-muted-strong)] shadow-[0_18px_44px_-34px_var(--shadow-soft)]">
+            <Image
+              src={awardsImage}
+              alt="Triangle brothers with awards"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 32vw, 100vw"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,17,31,0.04),rgba(7,17,31,0.18))]" />
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/join/introduction"
-              className="rounded-md bg-[var(--triangle-rose)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]"
+              className="button-primary rounded-full px-4 py-2 text-sm font-semibold"
             >
               Learn More
             </Link>
             <Link
               href="/contact"
-              className="rounded-md border border-[rgba(156,43,62,0.22)] bg-[rgba(156,43,62,0.05)] px-4 py-2 text-sm font-semibold text-[var(--triangle-rose)] transition hover:bg-[rgba(156,43,62,0.12)]"
+              className="button-secondary rounded-full px-4 py-2 text-sm font-semibold"
             >
               Contact Us
             </Link>
@@ -166,13 +182,13 @@ export default function HomePage() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/events"
-              className="rounded-full bg-[var(--triangle-rose)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]"
+              className="button-primary rounded-full px-4 py-2 text-sm font-semibold"
             >
               Events
             </Link>
             <Link
               href="/news"
-              className="rounded-full border border-[#ddb2b9]/40 bg-white/6 px-4 py-2 text-sm font-semibold text-[#f3d8dd] transition hover:bg-[rgba(156,43,62,0.2)]"
+              className="button-secondary-inverse rounded-full px-4 py-2 text-sm font-semibold"
             >
               News
             </Link>

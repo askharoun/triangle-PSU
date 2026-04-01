@@ -143,13 +143,13 @@ export function HomeSlideshow() {
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
                   href={slides[activeIndex]?.primaryHref ?? "/join/introduction"}
-                  className="rounded-full bg-[var(--triangle-rose)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]"
+                  className="button-primary rounded-full px-5 py-3 text-sm font-semibold"
                 >
                   {slides[activeIndex]?.primaryLabel}
                 </Link>
                 <Link
                   href={slides[activeIndex]?.secondaryHref ?? "/events"}
-                  className="rounded-full border border-[#ddb2b9]/40 bg-[rgba(156,43,62,0.08)] px-5 py-3 text-sm font-semibold text-[#f3d8dd] transition hover:bg-[rgba(156,43,62,0.18)]"
+                  className="button-secondary-inverse rounded-full px-5 py-3 text-sm font-semibold"
                 >
                   {slides[activeIndex]?.secondaryLabel}
                 </Link>
@@ -158,18 +158,14 @@ export function HomeSlideshow() {
           </div>
         </div>
 
-        <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-[rgba(7,17,31,0.5)] px-3 py-2 backdrop-blur">
+        <div className="relative z-20 mx-auto mb-5 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-[rgba(7,17,31,0.5)] px-3 py-2 backdrop-blur sm:absolute sm:bottom-5 sm:left-1/2 sm:mb-0 sm:-translate-x-1/2">
           {slides.map((slide, index) => (
             <button
               key={slide.imageSrc}
               type="button"
               aria-label={`Show slide ${index + 1}`}
               aria-pressed={index === activeIndex}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                index === activeIndex
-                  ? "w-8 bg-[#ddb2b9]"
-                  : "w-2.5 bg-white/40 hover:bg-white/60"
-              }`}
+              className={`carousel-dot ${index === activeIndex ? "carousel-dot-active" : ""}`.trim()}
               onClick={() => goToSlide(index)}
             />
           ))}
@@ -179,7 +175,7 @@ export function HomeSlideshow() {
           <button
             type="button"
             aria-label="Previous slide"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#ddb2b9]/35 bg-[rgba(7,17,31,0.52)] text-[#f3d8dd] transition hover:bg-[rgba(156,43,62,0.3)]"
+            className="button-overlay"
             onClick={goToPrevious}
           >
             <ChevronLeft size={18} />
@@ -187,7 +183,7 @@ export function HomeSlideshow() {
           <button
             type="button"
             aria-label="Next slide"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#ddb2b9]/35 bg-[rgba(7,17,31,0.52)] text-[#f3d8dd] transition hover:bg-[rgba(156,43,62,0.3)]"
+            className="button-overlay"
             onClick={goToNext}
           >
             <ChevronRight size={18} />
