@@ -23,38 +23,38 @@ const slides: Slide[] = [
   {
     alt: "Penn State Triangle chapter banner",
     description:
-      "A rebuilt Penn State Triangle site for chapter life, recruitment, scholarships, events, and alumni connection.",
+      "Explore Penn State Triangle through brotherhood, events, scholarships, and alumni connection.",
     eyebrow: "Penn State Triangle",
     imageSrc: "/media/triangle-banner.jpg",
     primaryHref: "/join/introduction",
     primaryLabel: "Explore Membership",
     secondaryHref: "/events",
     secondaryLabel: "View Events",
-    title: "A chapter built for engineers, architects, and scientists.",
+    title: "Built for engineers, architects, and scientists.",
   },
   {
     alt: "Triangle Fraternity chapter house at Penn State",
     description:
-      "The chapter house remains a physical center for brotherhood, scholarship, and long-term community in State College.",
+      "The chapter house remains a center for brotherhood, scholarship, and daily chapter life in State College.",
     eyebrow: "Chapter Home",
     imageSrc: "/media/triangle-house.jpg",
     primaryHref: "/about/our-chapter-home",
     primaryLabel: "Chapter Home",
     secondaryHref: "/about/location-and-directions",
     secondaryLabel: "Location",
-    title: "A Penn State presence rooted in place, tradition, and daily chapter life.",
+    title: "A chapter home rooted in tradition and daily life.",
   },
   {
     alt: "Triangle Fraternity brotherhood at Penn State",
     description:
-      "Triangle creates room for leadership, service, and the kind of friendships that stay intact long after graduation.",
+      "Triangle builds leadership, service, and friendships that last well beyond graduation.",
     eyebrow: "Brotherhood",
     imageSrc: "/media/triangle-brotherhood.jpg",
     primaryHref: "/brotherhood",
     primaryLabel: "See Brotherhood",
     secondaryHref: "/news",
     secondaryLabel: "Latest News",
-    title: "Brotherhood with academic purpose and professional ambition.",
+    title: "Brotherhood with purpose and professional ambition.",
   },
 ];
 
@@ -107,7 +107,7 @@ export function HomeSlideshow() {
       onFocusCapture={() => setIsPaused(true)}
       onBlurCapture={() => setIsPaused(false)}
     >
-      <div className="relative min-h-[28rem] sm:min-h-[32rem] lg:min-h-[36rem]">
+      <div className="relative h-[35.5rem] sm:h-[35rem] lg:h-[36rem]">
         {slides.map((slide, index) => (
           <div
             key={slide.imageSrc}
@@ -127,29 +127,29 @@ export function HomeSlideshow() {
           </div>
         ))}
 
-        <div className="relative z-10 flex min-h-[28rem] items-end sm:min-h-[32rem] lg:min-h-[36rem] lg:items-center">
-          <div className="w-full px-6 py-6 sm:px-8 sm:py-8 lg:px-10">
-            <div className="max-w-3xl">
+        <div className="relative z-10 flex h-full items-end lg:items-center">
+          <div className="w-full px-5 pt-[5.25rem] pb-28 sm:px-8 sm:py-8 lg:px-10">
+            <div className="max-w-[19rem] sm:max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#ddb2b9]">
                 {slides[activeIndex]?.eyebrow}
               </p>
-              <h2 className="font-display mt-4 text-4xl leading-[0.92] text-white sm:text-5xl lg:text-6xl xl:text-[4.5rem]">
+              <h2 className="font-display mt-3.5 text-[2.85rem] leading-[0.9] text-white sm:mt-4 sm:text-5xl sm:leading-[0.92] lg:text-6xl xl:text-[4.5rem]">
                 {slides[activeIndex]?.title}
               </h2>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/76 sm:text-lg">
+              <p className="mt-4 max-w-[18rem] text-[0.98rem] leading-7 text-white/78 sm:mt-5 sm:max-w-2xl sm:text-lg sm:leading-relaxed">
                 {slides[activeIndex]?.description}
               </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-col items-start gap-2.5 min-[430px]:flex-row min-[430px]:flex-wrap sm:mt-7 sm:gap-3">
                 <Link
                   href={slides[activeIndex]?.primaryHref ?? "/join/introduction"}
-                  className="button-primary rounded-full px-5 py-3 text-sm font-semibold"
+                  className="button-primary w-full justify-center rounded-full px-5 py-3 text-sm font-semibold min-[430px]:w-auto"
                 >
                   {slides[activeIndex]?.primaryLabel}
                 </Link>
                 <Link
                   href={slides[activeIndex]?.secondaryHref ?? "/events"}
-                  className="button-secondary-inverse rounded-full px-5 py-3 text-sm font-semibold"
+                  className="button-secondary-inverse w-full justify-center rounded-full px-5 py-3 text-sm font-semibold min-[430px]:w-auto"
                 >
                   {slides[activeIndex]?.secondaryLabel}
                 </Link>
@@ -158,7 +158,7 @@ export function HomeSlideshow() {
           </div>
         </div>
 
-        <div className="relative z-20 mx-auto mb-5 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-[rgba(7,17,31,0.5)] px-3 py-2 backdrop-blur sm:absolute sm:bottom-5 sm:left-1/2 sm:mb-0 sm:-translate-x-1/2">
+        <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-[rgba(7,17,31,0.5)] px-3 py-2 backdrop-blur sm:bottom-5">
           {slides.map((slide, index) => (
             <button
               key={slide.imageSrc}
@@ -171,7 +171,7 @@ export function HomeSlideshow() {
           ))}
         </div>
 
-        <div className="absolute right-5 top-5 z-20 flex items-center gap-2">
+        <div className="absolute right-4 top-4 z-20 flex items-center gap-2 sm:right-5 sm:top-5">
           <button
             type="button"
             aria-label="Previous slide"
